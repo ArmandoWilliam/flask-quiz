@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='js/scrip.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>{{ quiz_title }}</h1>
+        <div class="best-score">
+            <p>Best Score: {{ best_score }}%</p>
+        </div>
+        <div class="best-score">
+            <button onclick="resetBestScore()" class="reset-score-btn">Reset Best Score</button>
+            <p>Best Score: {{ best_score }}%</p>
+        </div>
+    </header>
+
+    <main>
+        <form method="POST" action="{{ url_for('submit_quiz') }}">
+            {% for question in questions %}
+                <h2 class="questions">Question {{ question.id }}: {{ question.question_text }}</h2>
+                {% for option in question.options %}
+                    <input type="radio" name="{{ question.id }}" value="{{ option }}" required> <span class="options">{{ option }}</span><br>
+                {% endfor %}
+                <br>
+            {% endfor %}
+            <input class="submit-button" type="submit" value="Submit Answers">
+        </form>
+
+        {% if score is defined %}
+        <div class="result">
+            <h2>Quiz Result</h2>
+            <p>Your score: {{ score }} out of {{ total_questions }}</p>
+        </div>
+        {% endif %}
+    </main>
+
+    <footer>
+        Made by Armando William Botticella - Full Stack Developer and Teacher
+    </footer>
+</body>
+</html>
