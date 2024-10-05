@@ -3,7 +3,7 @@
 <head>
     <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{ url_for('static', filename='js/scrip.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
 <body>
     <header>
@@ -12,7 +12,7 @@
             <p>Best Score: {{ best_score }}%</p>
         </div>
         <div class="best-score">
-            <button onclick="resetBestScore()" class="reset-score-btn">Reset Best Score</button>
+            <button onclick="resetBestScore()" class="reset-score-btn">Reset</button>
             <p>Best Score: {{ best_score }}%</p>
         </div>
     </header>

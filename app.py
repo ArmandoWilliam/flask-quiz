@@ -1,5 +1,4 @@
-import json
-from flask import Flask, jsonify, request, render_template, session
+from flask import Flask, jsonify, request, render_template, session, redirect, url_for
 from flask_session import Session
 
 app = Flask(__name__)
@@ -90,7 +89,6 @@ def submit_quiz():
     score, total_questions = calculate_score(user_answers)
     percentage_score = (score / total_questions) * 100
 
-    # Update best score
     if percentage_score > session['best_score']:
         session['best_score'] = percentage_score
 
@@ -115,8 +113,10 @@ def calculate_score(user_answers):
 
 @app.route('/reset_best_score', methods=['POST'])
 def reset_best_score():
+    print('Punteggio migliore prima del reset:', session.get('best_score', 'Non impostato'))
     session['best_score'] = 0
-    return jsonify({"success": True})
+    print('Punteggio migliore dopo il reset:', session['best_score'])
+    return redirect(url_for('show_quiz')) 
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=3000)
