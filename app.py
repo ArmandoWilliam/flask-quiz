@@ -47,8 +47,8 @@ quiz_data = {
         },
         {
             'id': 7,
-            'question_text': 'Quale metodo di NLP è utilizzato per determinare il sentimento di un testo?',
-            'options': ['Tokenizzazione', 'Analisi del sentimento', 'Part-of-speech tagging', 'Named Entity Recognition'],
+            'question_text': 'Quale metodo di NLP è utilizzato per determinare l\'emozione espressa in un testo?',
+            'options': ['Tokenizzazione', 'Sentimental Analysis', 'Part-of-speech tagging', 'Named Entity Recognition'],
             'correct_answer': 'Analisi del sentimento'
         },
         {
